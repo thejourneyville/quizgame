@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/* opening */
+
 .outerBorder {
   height: 95vh;
   display: flex;
@@ -8,27 +10,25 @@
   align-items: center;
 }
 
-.introBackground {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.backgroundDesign {
+.openingDesign {
+  margin: 0px;
   width: 35rem;
   height: 35rem;
   background-color: #F5F7FB;
+  background-image: url(../src/images/blobs.png), url(../src/images/blob5.png);
+  background-position: right top, left bottom;
+  background-repeat: no-repeat, no-repeat;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
 }
 
-.backgroundDesignYellow {
+.openingDesignYellow {
   width: 35%;
   align-self: flex-end;
 }
 
-.backgroundDesignBlue {
+.openingDesignBlue {
   width: 25%;
 }
 
@@ -82,5 +82,72 @@
   color: lightgrey;
 }
 
+/* questions */
 
+.questionsBackground {
+  box-sizing: border-box;
+  margin: 0px;
+  padding-top: 25px;
+  width: 35rem;
+  height: 35rem;
+  background-color: #F5F7FB;
+  background-image: url(../src/images/blobs.png), url(../src/images/blob5.png);
+  background-position: 107% -7%, -7% 107%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.questionParts{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 25px;
+}
+
+.questionRow {
+  padding: 15px 75px 0px;
+}
+
+.question {
+  font-family: 'Karla';
+  font-weight: 700;
+  font-size: 1rem;
+  color: #293264;
+  margin-bottom: 8px;
+}
+
+.choices {
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px solid #DBDEF0;
+  gap: .75rem;
+  padding-bottom: 15px;
+}
+
+.choiceButton {
+  border-radius: 8px;
+  border: 1px solid #4D5B9E;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 10.24px;
+  text-align: center;
+  color: #293264;
+  background-color: transparent;
+  padding: 3px 8px;
+}
+
+.checkButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.checkButton {
+  background: #4D5B9E;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 10.24px;
+  text-align: center;
+  color: #F5F7FB;
+  padding: 11px 20px;
+}
 

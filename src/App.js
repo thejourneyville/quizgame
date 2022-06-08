@@ -1,14 +1,24 @@
 import React from 'react'
 import "./style.css"
-import Background from './components/background'
-
-
+import Opening from './components/opening'
+import Questions from './components/questions'
 
 export default function App() {
+
+  const [startGame, setStartGame] = React.useState(true)
+
+  function Start() {
+    setStartGame(true)
+  }
+
   return (
     <>
       <main className="outerBorder">
-        <Background />
+        {!startGame
+        ?
+        <Opening start={Start}/>
+        :
+        <Questions />}
       </main>
     </>
   )
