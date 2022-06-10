@@ -3,12 +3,19 @@ import { nanoid } from "nanoid"
 
 export default function Questions() {
 
+  const numberOfQuestions = 5
 
   const [resetButton, setResetButton] = React.useState(false)
   const [triviaData, setTriviaData] = React.useState([])
+  const [userAnswers, setUserAnswers] = React.useState(
+    [...Array(numberOfQuestions).keys()]
+    .map(() => undefined))
+  const [correctAnswers, setCorrectAnswers] = React.useState(
+    [...Array(numberOfQuestions).keys()]
+    .map(() => undefined))
 
   React.useEffect(() => {
-    fetch(`https://opentdb.com/api.php?amount=5`)
+    fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}`)
       .then(res => res.json())
       .then(triviaApiData => {
 
@@ -25,13 +32,13 @@ export default function Questions() {
                 Parser(result.correct_answer)
                 ]
                 .sort(() => Math.random() - 0.5),
-              correctAnswer: result.correct_answer
+              correctAnswer: result.correct_answer,
             }
           })
         )
       })
-    }, [resetButton]
-  )
+    setUserAnswers([...Array(numberOfQuestions).keys()].map(() => undefined))
+  }, [resetButton])
 
   function Parser(str) {
     return new DOMParser().parseFromString
@@ -41,22 +48,48 @@ export default function Questions() {
     .documentElement.textContent
   }
 
-  function Select(event) {
+  function SelectAnswer(event) {
     const {id, value} = event.target
-    console.log(id, value)
+    setUserAnswers((prevUserAnswers) => {
+       return prevUserAnswers.map((answer, index) => {
+         if (+id === index) {
+           if (answer === undefined) {
+             return value
+           } else if (value !== answer) {
+             return value
+           } else if (value === answer) {
+             return undefined
+           }
+         } else {
+           return answer
+         }
+      })
+    })
   }
 
-  const questionItem = triviaData.map((item) => {
-    const choiceButtons = item.answers.map((answer, idx) => {
-      return (
-      <button onClick={Select}
-              key={idx}
-              id={idx}
-              value={answer}
-              className="choiceButton">
-                {answer}
-      </button>
-      )
+  console.log(userAnswers)
+
+  const questionItem = triviaData.map((item, itemIdx) => {
+    const choiceButtons = item.answers.map((answer, answerIdx) => {
+
+      console.log(answer)
+      return answer === userAnswers[itemIdx]
+      ?
+        <button onClick={SelectAnswer}
+                key={String(itemIdx) + String(answerIdx)}
+                id={itemIdx}
+                value={answer}
+                className="choiceButton selected">
+                  {answer}
+        </button>
+      :
+        <button onClick={SelectAnswer}
+                key={String(itemIdx) + String(answerIdx)}
+                id={itemIdx}
+                value={answer}
+                className="choiceButton">
+                  {answer}
+        </button>
     })
     return (
       <div key={nanoid()} className="questionRow">

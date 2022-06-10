@@ -135,6 +135,10 @@
   cursor: pointer;
 }
 
+.choiceButton.selected {
+  background: #D6DBF5;
+}
+
 .choiceButton:hover {
   background-color: grey;
   color: white;
