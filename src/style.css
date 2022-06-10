@@ -12,8 +12,8 @@
 
 .openingDesign {
   margin: 0px;
-  width: 35rem;
-  height: 35rem;
+  min-width: 35rem;
+  min-height: 35rem;
   background-color: #F5F7FB;
   background-image: url(../src/images/blobs.png), url(../src/images/blob5.png);
   background-position: right top, left bottom;
@@ -68,7 +68,7 @@
   font-weight: 500;
   font-size: 1rem;
   color: #F5F7FB;
-  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, .5)
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, .2)
 }
 
 .headerButton:hover {
@@ -77,7 +77,7 @@
 }
 
 .headerButton:active {
-  box-shadow: inset 2px 2px 3px 0px rgba(0, 0, 0, .5);
+  box-shadow: inset 2px 2px 1px 0px rgba(0, 0, 0, .2);
   background: white;
   color: lightgrey;
 }
@@ -89,7 +89,7 @@
   margin: 0px;
   padding-top: 25px;
   width: 35rem;
-  height: 35rem;
+  min-height: 35rem;
   background-color: #F5F7FB;
   background-image: url(../src/images/blobs.png), url(../src/images/blob5.png);
   background-position: 107% -7%, -7% 107%;
@@ -116,7 +116,7 @@
 
 .choices {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   border-bottom: 1px solid #DBDEF0;
   gap: .75rem;
   padding-bottom: 15px;
@@ -132,11 +132,23 @@
   color: #293264;
   background-color: transparent;
   padding: 3px 8px;
+  cursor: pointer;
+}
+
+.choiceButton:hover {
+  background-color: grey;
+  color: white;
+}
+
+.choiceButton:active {
+  background-color: white;
+  color: lightgrey;
 }
 
 .checkButtonContainer {
   display: flex;
   justify-content: center;
+  gap: 2rem;
 }
 
 .checkButton {
@@ -149,5 +161,19 @@
   text-align: center;
   color: #F5F7FB;
   padding: 11px 20px;
+  margin-bottom: 1.7rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, .2)
+}
+
+.checkButton:hover {
+  background: skyblue;
+  color: black;
+}
+
+.checkButton:active {
+  box-shadow: inset 2px 2px 1px 0px rgba(0, 0, 0, .2);
+  background: white;
+  color: lightgrey;
 }
 

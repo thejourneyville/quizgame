@@ -5,10 +5,11 @@ export const dataExamples =
     question: "What is your favorite color?",
     choices: [
       "Black",
-      "Red",
+      "Orangered",
       "Green",
       "Blue"
-    ]
+    ],
+    answer: "Orangered"
   },
   {
     id: 2,
@@ -17,8 +18,9 @@ export const dataExamples =
       "Horse",
       "Dragon",
       "Dog",
-      "Squirral"
-    ]
+      "Squirrel"
+    ],
+    answer: "Squirrel"
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ export const dataExamples =
       "Bacon",
       "Foo",
       "Bar"
-    ]
+    ],
+    answer: "Bar"
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ export const dataExamples =
       "Sad",
       "Embarrassed",
       "Poopy"
-    ]
+    ],
+    answer: "Orangered"
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ export const dataExamples =
       "Afternoon",
       "Evening",
       "Coding Time"
-    ]
+    ],
+    answer: "Morning"
   }
 ]
