@@ -14,7 +14,7 @@ export default function Questions() {
   const [correctAnswers, setCorrectAnswers] = React.useState([])
 
   React.useEffect(() => {
-    fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=17&difficulty=easy`)
+    fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}&difficulty=easy`)
       .then(res => res.json())
       .then(triviaApiData => {
 
@@ -69,9 +69,9 @@ export default function Questions() {
        return prevUserAnswers.map((answer, index) => {
          if (+id === index) {
            if (answer === undefined) {
-             return value
+             return Parser(value)
            } else if (value !== answer) {
-             return value
+             return Parser(value)
            } else if (value === answer) {
              return undefined
            }

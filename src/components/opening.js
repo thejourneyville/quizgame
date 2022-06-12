@@ -6,7 +6,7 @@ export default function Opening(props) {
       <div className="headerTextContainer">
 
         <p className="headerTitle">Quizzical</p>
-        <p className="subHeaderTitle">some description if needed</p>
+        <p className="subHeaderTitle">how much do you know?</p>
         
         <button className="headerButton"
                 onClick={(event) => props.start(event)}>
