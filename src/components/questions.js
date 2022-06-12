@@ -39,8 +39,6 @@ export default function Questions() {
   }, [resetButton])
 
   React.useEffect(() => {
-    console.log(userAnswers)
-    console.log(correctAnswers)
   },[correctAnswers])
 
   function CheckAnswers() {
@@ -73,6 +71,8 @@ export default function Questions() {
            } else if (value !== answer) {
              return Parser(value)
            } else if (value === answer) {
+             return undefined
+           } else {
              return undefined
            }
          } else {
