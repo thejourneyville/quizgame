@@ -6,16 +6,15 @@ export default function Questions() {
   const numberOfQuestions = 5
 
   const [resetButton, setResetButton] = React.useState(false)
+  const [checkAnswers, setCheckAnswers] = React.useState(false)
   const [triviaData, setTriviaData] = React.useState([])
   const [userAnswers, setUserAnswers] = React.useState(
     [...Array(numberOfQuestions).keys()]
     .map(() => undefined))
-  const [correctAnswers, setCorrectAnswers] = React.useState(
-    [...Array(numberOfQuestions).keys()]
-    .map(() => undefined))
+  const [correctAnswers, setCorrectAnswers] = React.useState([])
 
   React.useEffect(() => {
-    fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}`)
+    fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=17&difficulty=easy`)
       .then(res => res.json())
       .then(triviaApiData => {
 
@@ -37,9 +36,25 @@ export default function Questions() {
           })
         )
       })
-    setUserAnswers([...Array(numberOfQuestions).keys()].map(() => undefined))
   }, [resetButton])
 
+  React.useEffect(() => {
+    console.log(userAnswers)
+    console.log(correctAnswers)
+  },[correctAnswers])
+
+  function CheckAnswers() {
+    console.log("check answers click!")
+    setCheckAnswers(true)
+    setCorrectAnswers(triviaData.map((question) => question.correctAnswer))
+  }
+
+  function Reset() {
+    setResetButton(() => !resetButton)
+    setCheckAnswers(false)
+    setUserAnswers([...Array(numberOfQuestions).keys()])
+  }
+  
   function Parser(str) {
     return new DOMParser().parseFromString
     (
@@ -67,50 +82,111 @@ export default function Questions() {
     })
   }
 
-  console.log(userAnswers)
-
-  const questionItem = triviaData.map((item, itemIdx) => {
-    const choiceButtons = item.answers.map((answer, answerIdx) => {
-
-      console.log(answer)
-      return answer === userAnswers[itemIdx]
-      ?
-        <button onClick={SelectAnswer}
-                key={String(itemIdx) + String(answerIdx)}
-                id={itemIdx}
-                value={answer}
-                className="choiceButton selected">
-                  {answer}
-        </button>
-      :
-        <button onClick={SelectAnswer}
-                key={String(itemIdx) + String(answerIdx)}
-                id={itemIdx}
-                value={answer}
-                className="choiceButton">
-                  {answer}
-        </button>
-    })
+  function Score() {
     return (
-      <div key={nanoid()} className="questionRow">
-        <div className="question">{`${item.question}`}</div>
-        <div className="choices">
-          {choiceButtons}
-        </div>
-      </div>
+    <div className="score">
+      {`You scored ${userAnswers.filter((answer, idx) => 
+      (answer === correctAnswers[idx])).length}/${numberOfQuestions} correct answers`}
+    </div>
     )
+  }
+
+  const qOrA = !checkAnswers ?
+
+    triviaData.map((item, itemIdx) => {
+      const choiceButtons = item.answers.map((answer, answerIdx) => {
+        
+        return answer === userAnswers[itemIdx]
+        ?
+          <button onClick={SelectAnswer}
+                  key={String(itemIdx) + String(answerIdx)}
+                  id={itemIdx}
+                  value={answer}
+                  className="choiceButton selected">
+                    {answer}
+          </button>
+        :
+          <button onClick={SelectAnswer}
+                  key={String(itemIdx) + String(answerIdx)}
+                  id={itemIdx}
+                  value={answer}
+                  className="choiceButton">
+                    {answer}
+          </button>
+      })
+      return (
+        <div key={nanoid()} className="questionRow">
+          <div className="question">{`${item.question}`}</div>
+          <div className="choices">
+            {choiceButtons}
+          </div>
+        </div>
+      )
     })
+
+    :
+
+    triviaData.map((item, itemIdx) => {
+      const choiceButtons = item.answers.map((answer, answerIdx) => {
+
+        if (answer === userAnswers[itemIdx] && userAnswers[itemIdx] !== correctAnswers[itemIdx]) {
+          return (
+          <button
+                  key={String(itemIdx) + String(answerIdx)}
+                  id={itemIdx}
+                  value={answer}
+                  className="choiceButton incorrectAnswer">
+                    {answer}
+          </button>
+          )
+        } else if (answer === correctAnswers[itemIdx]) {
+          return (
+          <button 
+                  key={String(itemIdx) + String(answerIdx)}
+                  id={itemIdx}
+                  value={answer}
+                  className="choiceButton correctAnswer">
+                    {answer}
+          </button>
+          )
+        } else {
+          return (
+          <button 
+                  key={String(itemIdx) + String(answerIdx)}
+                  id={itemIdx}
+                  value={answer}
+                  className="choiceButton">
+                    {answer}
+          </button>
+          )
+        }
+      })
+      return (
+        <div key={nanoid()} className="questionRow">
+          <div className="question">{`${item.question}`}</div>
+          <div className="choices">
+            {choiceButtons}
+          </div>
+        </div>
+      )
+    })
+  
+  const checkOrScore = !checkAnswers
+  ?
+  <button onClick={CheckAnswers} className="checkButton">Check Answers</button>
+  :
+  <Score />
 
   return (
   <div>
     <div className="questionsBackground">
       <div className="questionParts">
-        {questionItem}
+        {qOrA}
         <div className="checkButtonContainer">
-          <button className="checkButton">Check answers</button>
-          <button onClick={() => setResetButton(() => !resetButton)}
+          {checkOrScore}
+          <button onClick={Reset}
                   className="checkButton">
-                    reset
+                    New Quiz
           </button>
         </div>
       </div>

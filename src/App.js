@@ -5,7 +5,7 @@ import Questions from './components/questions'
 
 export default function App() {
 
-  const [startGame, setStartGame] = React.useState(true)
+  const [startGame, setStartGame] = React.useState(false)
 
   function Start() {
     setStartGame(true)

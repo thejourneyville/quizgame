@@ -4,7 +4,7 @@
 /* opening */
 
 .outerBorder {
-  height: 95vh;
+  margin: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +152,18 @@
 .checkButtonContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
+  margin-bottom: 1.7rem;
+}
+
+.choiceButton.correctAnswer {
+  background: #94D7A2;
+}
+
+.choiceButton.incorrectAnswer {
+  color: grey;
+  background: #F8BCBC;
 }
 
 .checkButton {
@@ -165,7 +176,6 @@
   text-align: center;
   color: #F5F7FB;
   padding: 11px 20px;
-  margin-bottom: 1.7rem;
   cursor: pointer;
   box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, .2)
 }
@@ -181,3 +191,10 @@
   color: lightgrey;
 }
 
+.score {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 12.8px;
+  text-align: center;
+  color: #293264;
+}
