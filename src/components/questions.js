@@ -31,7 +31,7 @@ export default function Questions() {
                 Parser(result.correct_answer)
                 ]
                 .sort(() => Math.random() - 0.5),
-              correctAnswer: result.correct_answer,
+              correctAnswer: Parser(result.correct_answer),
             }
           })
         )
