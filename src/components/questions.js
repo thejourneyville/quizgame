@@ -54,10 +54,7 @@ export default function Questions() {
   }
   
   function Parser(str) {
-    return new DOMParser().parseFromString
-    (
-    str, "text/html"
-    )
+    return new DOMParser().parseFromString(str, "text/html")
     .documentElement.textContent
   }
 
