@@ -1,13 +1,13 @@
 {
   "main.css": "/quizgame/static/css/main.b5179cb2.chunk.css",
-  "main.js": "/quizgame/static/js/main.8347a4c7.chunk.js",
-  "main.js.map": "/quizgame/static/js/main.8347a4c7.chunk.js.map",
+  "main.js": "/quizgame/static/js/main.90e93d7b.chunk.js",
+  "main.js.map": "/quizgame/static/js/main.90e93d7b.chunk.js.map",
   "static/js/1.cc2aa90f.chunk.js": "/quizgame/static/js/1.cc2aa90f.chunk.js",
   "static/js/1.cc2aa90f.chunk.js.map": "/quizgame/static/js/1.cc2aa90f.chunk.js.map",
   "runtime~main.js": "/quizgame/static/js/runtime~main.22625ca8.js",
   "runtime~main.js.map": "/quizgame/static/js/runtime~main.22625ca8.js.map",
   "static/css/main.b5179cb2.chunk.css.map": "/quizgame/static/css/main.b5179cb2.chunk.css.map",
   "index.html": "/quizgame/index.html",
-  "precache-manifest.e5f288c6f31d76ebc234362610cbbbed.js": "/quizgame/precache-manifest.e5f288c6f31d76ebc234362610cbbbed.js",
+  "precache-manifest.ef02ec29bd924ec4551f0bc24e11b2cc.js": "/quizgame/precache-manifest.ef02ec29bd924ec4551f0bc24e11b2cc.js",
   "service-worker.js": "/quizgame/service-worker.js"
 }
