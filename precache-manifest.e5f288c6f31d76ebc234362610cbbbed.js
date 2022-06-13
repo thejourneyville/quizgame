@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "95ac695eee76b4dfd8f5",
-    "url": "/quizgame/static/css/main.0943d8a4.chunk.css"
+    "revision": "8347a4c718c8a068a652",
+    "url": "/quizgame/static/css/main.b5179cb2.chunk.css"
   },
   {
-    "revision": "95ac695eee76b4dfd8f5",
-    "url": "/quizgame/static/js/main.95ac695e.chunk.js"
+    "revision": "8347a4c718c8a068a652",
+    "url": "/quizgame/static/js/main.8347a4c7.chunk.js"
   },
   {
     "revision": "cc2aa90f3e4474044059",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/quizgame/static/js/runtime~main.22625ca8.js"
   },
   {
-    "revision": "05250c5b15a5790e857b99a92bbf2a41",
+    "revision": "73698c8f5e6712639190a1ef305d2104",
     "url": "/quizgame/index.html"
   }
 ];
